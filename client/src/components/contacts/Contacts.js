@@ -4,9 +4,6 @@ import ContactItem from './ContactItem';
 
 const Contacts = () => {
   const { contacts } = useContext(ContactContext);
-
-  console.log(contacts);
-
   return (
     <div>
       {contacts.map((contact) => (
