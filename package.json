@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "server:npx": "npx nodemon server.js"
+    "server:npx": "npx nodemon server.js",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server:npx\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
