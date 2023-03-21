@@ -1,4 +1,4 @@
-import { ADD_CONTACT, CLEAR_CURRENT, DELETE_CONTACT, SET_CURRENT, UPDATE_CONTACT } from '../types';
+import { ADD_CONTACT, CLEAR_CURRENT, CLEAR_FILTER, DELETE_CONTACT, FILTER_CONTACTS, SET_CURRENT, UPDATE_CONTACT } from '../types';
 
 const contactReducer = (state, action) => {
   switch (action.type) {
@@ -29,6 +29,19 @@ const contactReducer = (state, action) => {
         ...state,
         current: null
       };
+    case FILTER_CONTACTS:
+      return {
+        ...state,
+        filtered: state.contacts.filter(contact => {
+          const regex = new RegExp(`${action.payload}`, 'gi');
+          return contact.name.match(regex) || contact.email.match(regex);
+        })
+      }
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null
+      }
     default:
       return state;
   }
