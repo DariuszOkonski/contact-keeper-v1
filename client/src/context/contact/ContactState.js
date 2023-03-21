@@ -5,6 +5,7 @@ import {
   CLEAR_CURRENT,
   DELETE_CONTACT,
   SET_CURRENT,
+  UPDATE_CONTACT,
 } from '../types';
 import ContactContext from './contactContext';
 import contactReducer from './contactReducer';
@@ -67,13 +68,19 @@ const ContactState = (props) => {
     })
   }
 
-  // Update Contact
+  const updateContact = contact => {
+    dispatch({
+      type: UPDATE_CONTACT,
+      payload: contact
+    })
+  }
+
   // Filter Contacts
   // Clear Filter
 
   return (
     <ContactContext.Provider
-      value={{ contacts: state.contacts, current: state.current, addContact, deleteContact, setCurrent, clearCurrent }}
+      value={{ contacts: state.contacts, current: state.current, addContact, deleteContact, setCurrent, clearCurrent, updateContact }}
     >
       {props.children}
     </ContactContext.Provider>
