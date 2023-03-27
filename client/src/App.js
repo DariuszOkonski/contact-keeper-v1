@@ -7,26 +7,31 @@ import ContactState from './context/contact/ContactState';
 import AuthState from './context/auth/AuthState';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import AlertState from './context/alert/AlertState';
+import Alerts from './components/layout/Alerts';
 
 const App = () => {
   return (
-    <AuthState>
-      <ContactState>
-        <BrowserRouter>
-          <div className='App'>
-            <Navbar />
-            <div className='container'>
-              <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/about' element={<About />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/login' element={<Login />} />
-              </Routes>
+    <AlertState>
+      <AuthState>
+        <ContactState>
+          <BrowserRouter>
+            <div className='App'>
+              <Navbar />
+              <div className='container'>
+                <Alerts />
+                <Routes>
+                  <Route path='/' element={<Home />} />
+                  <Route path='/about' element={<About />} />
+                  <Route path='/register' element={<Register />} />
+                  <Route path='/login' element={<Login />} />
+                </Routes>
+              </div>
             </div>
-          </div>
-        </BrowserRouter>
-      </ContactState>
-    </AuthState>
+          </BrowserRouter>
+        </ContactState>
+      </AuthState>
+    </AlertState>
   );
 };
 
